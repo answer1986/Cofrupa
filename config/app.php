@@ -107,7 +107,7 @@ return [
     */
 
     'faker_locale' => 'en',
-    'available_locales' => ['en', 'es'],
+    'available_locales' => ['en', 'es', 'zh'],
 
 
     /*

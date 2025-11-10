@@ -100,7 +100,7 @@ class CarouselController extends Controller
 
         $image = $request->file('image');
         $fileName = time() . '_carousel_' . $nextOrder . '.' . $image->getClientOriginalExtension();
-        $path = 'image/uploads/' . $fileName;
+        $path = 'public/image/uploads/' . $fileName;
 
         // Crear directorio si no existe
         $uploadDir = public_path('image/uploads');
@@ -220,7 +220,7 @@ class CarouselController extends Controller
 
             $imageFile = $request->file('image');
             $fileName = time() . '_carousel_' . $image->carousel_order . '.' . $imageFile->getClientOriginalExtension();
-            $path = 'image/uploads/' . $fileName;
+            $path = 'public/image/uploads/' . $fileName;
             
             \Log::info("Nuevo archivo: " . $fileName);
             \Log::info("Tamaño del archivo: " . $imageFile->getSize() . " bytes");

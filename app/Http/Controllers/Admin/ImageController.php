@@ -51,7 +51,7 @@ class ImageController extends Controller
     {
         $request->validate([
             'key' => 'required|string|unique:images',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10240',
             'alt_text_es' => 'nullable|string',
             'alt_text_en' => 'nullable|string',
             'section' => 'required|string',
@@ -112,7 +112,7 @@ class ImageController extends Controller
     {
         $request->validate([
             'key' => 'required|string|unique:images,key,' . $image->id,
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10240',
             'alt_text_es' => 'nullable|string',
             'alt_text_en' => 'nullable|string',
             'section' => 'required|string',

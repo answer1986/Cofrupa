@@ -33,20 +33,10 @@ if (!function_exists('editableImage')) {
         $imagePath = $image ? $image->path : $defaultPath;
         $altText = $image ? $image->getAltText() : $alt;
         
-        // Para producción, asegurar que las rutas funcionen correctamente
-        $displayPath = $imagePath;
-        if ($image) {
-            // Si es una imagen de la BD, usar ruta relativa
-            $displayPath = '/' . $imagePath;
-        } else {
-            // Si es imagen por defecto, mantener el path original
-            $displayPath = $defaultPath;
-        }
-        
         if (session('admin_authenticated')) {
             return view('components.editable-image', [
                 'key' => $key,
-                'path' => $displayPath,
+                'path' => $imagePath,
                 'alt' => $altText,
                 'section' => $section,
                 'class' => $class,
@@ -55,13 +45,23 @@ if (!function_exists('editableImage')) {
             ])->render();
         }
         
-        $styleAttr = $style ? ' style="' . $style . '"' : '';
-        // Para usuarios normales, usar asset() solo con imágenes por defecto
-        if ($image) {
-            return '<img src="' . $displayPath . '" alt="' . $altText . '" class="' . $class . '"' . $styleAttr . '>';
-        } else {
-            return '<img src="' . asset($defaultPath) . '" alt="' . $altText . '" class="' . $class . '"' . $styleAttr . '>';
+        // Para el front-end (sin modo admin)
+        // Limpiar rutas - Laravel sirve desde public/ automáticamente
+        $cleanPath = $imagePath;
+        
+        // Si empieza con ./ removerlo
+        if (strpos($cleanPath, './') === 0) {
+            $cleanPath = substr($cleanPath, 2);
         }
+        
+        // Si no empieza con /, agregarlo
+        if (strpos($cleanPath, '/') !== 0) {
+            $cleanPath = '/' . $cleanPath;
+        }
+        
+        $styleAttr = $style ? ' style="' . $style . '"' : '';
+        $classAttr = $class ? ' class="' . $class . '"' : '';
+        return '<img src="' . $cleanPath . '" alt="' . htmlspecialchars($altText) . '"' . $classAttr . $styleAttr . '>';
     }
 }
 

@@ -219,8 +219,8 @@
                                 </div>
                             </div>
                             
-                            <!-- Imagen principal - Agregar estilo inline temporalmente -->
-                            <img src="/{{ $image->path }}" class="card-img-top" 
+                            <!-- Imagen principal -->
+                            <img src="/{{ $image->path }}" class="card-img-top"
                                 style="height: 200px; object-fit: cover; width: 100%; border: 1px solid green;">
                             
                             <div class="card-body p-3">
@@ -892,7 +892,7 @@ function editSlide(slideId) {
                 
                 // Mostrar imagen actual
                 if (slide.path) {
-                    document.getElementById('currentImage').src = '{{ asset("") }}' + slide.path;
+                    document.getElementById('currentImage').src = '/' + slide.path;
                 }
                 
                 console.log('Datos del slide cargados correctamente');

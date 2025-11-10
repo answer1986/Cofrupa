@@ -172,7 +172,7 @@ body {
                     <div class="mb-3">
                         <label class="form-label"><i class="fas fa-upload me-1"></i>Nueva Imagen</label>
                         <input type="file" class="form-control" id="imageFile" accept="image/*" required>
-                        <div class="form-text">Formatos soportados: JPG, PNG, GIF, SVG, WebP (máx. 2MB)</div>
+                        <div class="form-text">Formatos soportados: JPG, PNG, GIF, SVG, WebP, AVIF (máx. 10MB)</div>
                     </div>
                     
                     <!-- Preview de imagen original -->

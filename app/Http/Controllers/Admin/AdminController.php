@@ -108,7 +108,7 @@ class AdminController extends Controller
             \Log::info('Validando request...');
             $request->validate([
                 'key' => 'required|string',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10240',
                 'alt_text_es' => 'nullable|string',
                 'alt_text_en' => 'nullable|string'
             ]);

@@ -109,8 +109,8 @@
 <body>
     <div class="login-card">
         <div class="login-header">
-            <h2><i class="fas fa-shield-alt"></i> Administración</h2>
-            <p>Panel de Control - Onizzo</p>
+            <h2><i class="fas fa-shield-alt"></i> Administración Cofrupa</h2>
+            <p>Cofrupa acceso administrativo</p>
         </div>
 
         @if($errors->any())

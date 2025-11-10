@@ -12,7 +12,7 @@ class LanguageController extends Controller
     public function switchLang($lang)
     {
         Log::info("Switching language to: " . $lang);
-        if (in_array($lang, config('app.available_locales', ['en', 'es']))) {
+        if (in_array($lang, config('app.available_locales', ['en', 'es', 'zh']))) {
             Session::put('locale', $lang);
             App::setLocale($lang);
         }

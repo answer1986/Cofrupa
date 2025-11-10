@@ -1,53 +1,128 @@
 @section('footer')
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <!-- Logo de la empresa -->
-            <div class="footer-logo">
-                {!! editableImage('footer_logo', './image/Onizzo-header.png', 'Logo Onizzo', 'footer') !!}
+<footer class="footer-fruteec">
+    <div class="footer-container-fruteec">
+        <div class="footer-top">
+            <div class="footer-logo-section">
+                <img src="{{ asset('image/LOGO-sin fonfopng.png') }}" alt="Cofrupa Logo" class="footer-logo-fruteec">
             </div>
             
-            <!-- Sección Nuestra Empresa -->
-            <div class="footer-section">
-                <h4>{!! editableContent('footer_company_title', 'footer', __('messages.our_company')) !!}</h4>
-                <a href="{!! strip_tags(editableContent('footer_privacy_url', 'footer', '#')) !!}">{!! editableContent('footer_privacy_text', 'footer', __('messages.privacy_policy')) !!}</a>
+            <div class="footer-links">
+                <h4>{!! editableContent('footer_company_title', 'footer', 'Nuestra Empresa', 'text') !!}</h4>
+                <ul>
+                    <li><a href="#nosotros">Quiénes Somos</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#mercados">Mercados</a></li>
+                </ul>
             </div>
-
-            <!-- Sección Contacto -->
-            <div class="footer-section2">
-                <h4>{!! editableContent('footer_contact_title', 'footer', __('messages.contact')) !!}</h4>
-                <!--<div class="footer-contact-item">
+            
+            <div class="footer-contact">
+                <h4>{!! editableContent('footer_contact_title', 'footer', 'Contacto', 'text') !!}</h4>
+                <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>{!! editableContent('footer_email_label', 'footer', __('messages.mail')) !!}: <a href="mailto:{!! strip_tags(editableContent('footer_email', 'footer', 'ventas@onizzo.com')) !!}">{!! editableContent('footer_email', 'footer', 'ventas@onizzo.com') !!}</a></span>
-                </div>-->
+                    <a href="mailto:{!! strip_tags(editableContent('footer_email', 'footer', 'cofrupa@cofrupa.cl', 'text')) !!}">
+                        {!! editableContent('footer_email', 'footer', 'cofrupa@cofrupa.cl', 'text') !!}
+                    </a>
+                </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>{!! editableContent('footer_phone_label', 'footer', __('messages.phone')) !!}: <a href="tel:{!! str_replace([' ', '-', '(', ')', '+'], '', strip_tags(editableContent('footer_phone', 'footer', '562 2682 9200'))) !!}">{!! editableContent('footer_phone', 'footer', '562 2682 9200') !!}</a></span>
+                    <a href="tel:+56992395293">
+                        {!! editableContent('footer_phone', 'footer', '(+56 9) 9 239 5293', 'text') !!}
+                    </a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{!! editableContent('footer_address', 'footer', 'Santiago, Chile', 'text') !!}</span>
                 </div>
             </div>
-
-            <div class="footer-section footer-cert" id="cert">
-                <h4>{!! editableContent('footer_cert_title', 'footer', __('messages.certificaciones')) !!}</h4>
-                <div id="cert1" style="height: 150%;">
-                    {!! editableImage('footer_cert_image', './image/icon/certificaciones.png', 'certificaciones', 'footer', '', 'height: 150%; width: auto; object-fit: contain;') !!}
-                </div>
-            </div>
-
-
-            <!-- Sección Síguenos 
-            <div class="footer-section footer-social" id="socials">
-                <h4>{!! editableContent('footer_social_title', 'footer', 'Síguenos') !!}</h4>
-                <a href="{!! strip_tags(editableContent('footer_instagram_url', 'footer', '#')) !!}">{!! editableImage('footer_instagram_icon', './image/insta.png', 'Instagram', 'footer') !!}</a>
-                <a href="{!! strip_tags(editableContent('footer_facebook_url', 'footer', '#')) !!}">{!! editableImage('footer_facebook_icon', './image/facebook.png', 'Facebook', 'footer') !!}</a>
-            </div>-->
             
+            <div class="footer-certifications">
+                <h4>{{ __('messages.footer_cert_title') }}</h4>
+                <div class="footer-cert-images-container">
+                    <div class="footer-cert-images">
+                        {!! editableImage('footer_cert_image_1', './image/icon/certificaciones.png', 'Certificación BRC', 'footer', '', 'max-height: 80px;') !!}
+                    </div>
+                    <div class="footer-cert-images">
+                        {!! editableImage('footer_cert_image_2', './image/icon/certificaciones.png', 'Certificación FDA', 'footer', '', 'max-height: 80px;') !!}
+                    </div>
+                </div>
+                
+                <!-- Reloj de Chile -->
+                <div class="footer-chile-clock">
+                    <h5>{{ __('messages.chile_time') }}</h5>
+                    <div class="clock-display" id="chileClockDisplay">
+                        <i class="fas fa-clock"></i>
+                        <span id="chileTime">--:--:--</span>
+                    </div>
+                    <p class="clock-location">{{ __('messages.santiago_chile') }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {{ date('Y') }} Cofrupa. Todos los derechos reservados.</p>
+            <p>
+                <a href="https://r3q.cl" target="_blank" rel="noopener noreferrer">
+                    {{ __('messages.development_by') }}
+                </a>
+            </p>
         </div>
     </div>
-
-    <!-- Sección inferior -->
-    <div class="footer-bottom">
-        <p><a href="https://r3q.cl" target="_blank" rel="noopener noreferrer">{{ __('messages.development_by') }}</a></p>
-    </div>
 </footer>
+
+<script>
+// Reloj de Chile en tiempo real
+function updateChileClock() {
+    const now = new Date();
+    
+    // Obtener hora de Chile (America/Santiago)
+    const chileTime = new Date(now.toLocaleString('en-US', { 
+        timeZone: 'America/Santiago' 
+    }));
+    
+    // Obtener el idioma actual de la página
+    const currentLang = document.documentElement.lang || '{{ app()->getLocale() }}';
+    
+    let formattedTime;
+    
+    // Formatear según el idioma
+    switch(currentLang) {
+        case 'en':
+            // Formato inglés: 12:30:45 PM
+            formattedTime = chileTime.toLocaleString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            break;
+        case 'zh':
+            // Formato chino: 12:30:45
+            formattedTime = chileTime.toLocaleString('zh-CN', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            break;
+        default: // 'es'
+            // Formato español: 12:30:45
+            formattedTime = chileTime.toLocaleString('es-CL', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            break;
+    }
+    
+    document.getElementById('chileTime').textContent = formattedTime;
+}
+
+// Actualizar el reloj inmediatamente
+updateChileClock();
+
+// Actualizar cada segundo
+setInterval(updateChileClock, 1000);
+</script>
 
 @endsection

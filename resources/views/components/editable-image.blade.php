@@ -4,14 +4,17 @@
         $actualPath = $imageRecord ? $imageRecord->path : $path;
         $hasCustomImage = $imageRecord && strpos($imageRecord->path, 'uploads/') !== false;
         
-        // Para producción, usar rutas relativas directas
+        // Limpiar la ruta para display
         $displayPath = $actualPath;
-        if ($imageRecord) {
-            // Si es una imagen de la BD, usar ruta relativa sin asset()
-            $displayPath = '/' . $actualPath;
-        } else {
-            // Si es imagen por defecto, usar asset()
-            $displayPath = asset($path);
+        
+        // Si empieza con ./ removerlo
+        if (strpos($displayPath, './') === 0) {
+            $displayPath = substr($displayPath, 2);
+            }
+        
+        // Si no empieza con /, agregarlo
+        if (strpos($displayPath, '/') !== 0) {
+            $displayPath = '/' . $displayPath;
         }
     @endphp
     

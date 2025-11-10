@@ -1,13 +1,13 @@
 @extends('admin.layout')
 
-@section('title', 'Dashboard - Onizzo Admin')
+@section('title', 'Dashboard - Cofrupa Admin')
 
 @section('content')
     <div class="header-card">
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <h1><i class="fas fa-tachometer-alt me-3"></i>Dashboard</h1>
-                <p class="mb-0">Bienvenido al panel de administración de Onizzo</p>
+                <p class="mb-0">Bienvenido al panel de administración de Cofrupa</p>
             </div>
             <a href="{{ url('/') }}" target="_blank" class="btn btn-success">
                 <i class="fas fa-edit me-2"></i>Editar Sitio Visualmente

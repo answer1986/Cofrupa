@@ -153,7 +153,7 @@
                 <div class="sidebar position-fixed" style="width: inherit;">
                     <div class="logo-admin">
                         <h3><i class="fas fa-cog"></i> Admin Panel</h3>
-                        <small>Onizzo</small>
+                        <small>Cofrupa</small>
                     </div>
                     
                     <nav class="nav flex-column">
