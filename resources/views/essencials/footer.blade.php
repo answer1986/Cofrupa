@@ -7,16 +7,16 @@
             </div>
             
             <div class="footer-links">
-                <h4>{!! editableContent('footer_company_title', 'footer', 'Nuestra Empresa', 'text') !!}</h4>
+                <h4>{{ __('messages.our_company') }}</h4>
                 <ul>
-                    <li><a href="#nosotros">Quiénes Somos</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#mercados">Mercados</a></li>
+                    <li><a href="#nosotros">{{ __('messages.nosotros') }}</a></li>
+                    <li><a href="#productos">{{ __('messages.productos') }}</a></li>
+                    <li><a href="#mercados">{{ __('messages.mercados') }}</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
-                <h4>{!! editableContent('footer_contact_title', 'footer', 'Contacto', 'text') !!}</h4>
+                <h4>{{ __('messages.contact') }}</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:{!! strip_tags(editableContent('footer_email', 'footer', 'cofrupa@cofrupa.cl', 'text')) !!}">
@@ -68,8 +68,9 @@
 </footer>
 
 <script>
-// Reloj de Chile en tiempo real
-function updateChileClock() {
+document.addEventListener('DOMContentLoaded', function() {
+    // Reloj de Chile en tiempo real
+    function updateChileClock() {
     const now = new Date();
     
     // Obtener hora de Chile (America/Santiago)
@@ -116,11 +117,12 @@ function updateChileClock() {
     document.getElementById('chileTime').textContent = formattedTime;
 }
 
-// Actualizar el reloj inmediatamente
-updateChileClock();
+    // Actualizar el reloj inmediatamente
+    updateChileClock();
 
-// Actualizar cada segundo
-setInterval(updateChileClock, 1000);
+    // Actualizar cada segundo
+    setInterval(updateChileClock, 1000);
+});
 </script>
 
 @endsection

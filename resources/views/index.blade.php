@@ -292,16 +292,23 @@ setInterval(nextCert, 5000);
 document.addEventListener('DOMContentLoaded', function() {
     // --- 1. Configuración del Mapa ---
     const container = document.getElementById('world-map-interactive');
-    const containerWidth = container.offsetWidth;
+    if (!container) return;
+    
+    // Limpiar cualquier SVG existente
+    container.innerHTML = '';
+    
+    const containerWidth = Math.min(container.offsetWidth, window.innerWidth - 40);
     const width = Math.min(containerWidth, 1200);
     const height = Math.min(width * 0.6, 600);
 
-    // Creamos el SVG
+    // Creamos el SVG con límites estrictos
     const svg = d3.select("#world-map-interactive").append("svg")
         .attr("width", "100%")
         .attr("height", height)
         .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("preserveAspectRatio", "xMidYMid meet");
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("max-width", "100%")
+        .style("overflow", "hidden");
 
     // Agregar océano azul de fondo
     svg.append("rect")
