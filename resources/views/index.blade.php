@@ -592,9 +592,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
         <div class="contact-form-section">
             <h3>{!! editableContent('contact_form_title', 'contacto', 'CONTÁCTANOS', 'text') !!}</h3>
-            <form class="contact-form-fruteec" action="https://formspree.io/f/mzzyepdq" method="POST" id="contactForm" novalidate>
+            <form class="contact-form-fruteec" action="#" method="POST" id="contactForm" novalidate>
                 <input type="hidden" name="_to" value="cofrupa@cofrupa.cl">
                 <input type="hidden" name="_replyto" id="_replyto" value="">
+                <input type="hidden" name="_next" value="#">
+                <input type="hidden" name="_subject" value="Nuevo mensaje de contacto desde Cofrupa">
                 <div class="form-group">
                     <input type="text" 
                            name="empresa" 
@@ -849,51 +851,74 @@ document.addEventListener('DOMContentLoaded', function() {
             // Crear FormData con todos los campos del formulario
             const formData = new FormData(form);
             
+            // Asegurar que el email de destino esté configurado
+            formData.set('_to', 'cofrupa@cofrupa.cl');
+            
             // Agregar el token de reCAPTCHA
             formData.append('g-recaptcha-response', recaptchaResponse);
             
             // Enviar a Formspree
-            fetch(form.action, {
+            fetch('https://formspree.io/f/mzzyepdq', {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
-                }
+                },
+                mode: 'cors'
             })
             .then(response => {
-                if (response.ok) {
-                    // Mensaje de éxito
-                    const lang = document.documentElement.lang || '{{ app()->getLocale() }}';
-                    let successMessage = '¡Mensaje enviado exitosamente! 🚢';
-                    
-                    if (lang === 'en') {
-                        successMessage = 'Message sent successfully! 🚢';
-                    } else if (lang === 'zh') {
-                        successMessage = '消息发送成功！🚢';
-                    }
-                    
-                    btnShip.style.opacity = '0';
-                    submitBtn.innerHTML = '<span style="font-size: 14px;">' + successMessage + '</span>';
-                    submitBtn.classList.remove('ship-sailing');
-                    submitBtn.classList.add('success-sent');
-                    
-                    // Limpiar el formulario
-                    form.reset();
-                    grecaptcha.reset();
-                    document.querySelector('.char-counter').textContent = '0/1000';
-                    
-                    // Restaurar el botón después de 3 segundos
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<span class="btn-text">{{ __("messages.form_submit") }}</span><span class="btn-ship">🚢</span>';
-                        submitBtn.classList.remove('success-sent');
-                        submitBtn.disabled = false;
-                        submitBtn.querySelector('.btn-text').style.display = 'block';
-                        submitBtn.querySelector('.btn-text').style.opacity = '1';
-                        submitBtn.querySelector('.btn-ship').style.display = 'none';
-                    }, 3000);
+                // Verificar si la respuesta es exitosa
+                if (response.ok || response.status === 200) {
+                    // Intentar parsear como JSON, si falla asumir éxito
+                    return response.json().catch(() => {
+                        // Si no es JSON pero la respuesta es OK, asumir éxito
+                        return { success: true };
+                    });
+                } else if (response.status === 302) {
+                    // Si hay redirección, no seguirla, asumir éxito
+                    return { success: true };
                 } else {
-                    throw new Error('Error al enviar el formulario');
+                    // Intentar obtener mensaje de error
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Error al enviar el formulario');
+                    }).catch(() => {
+                        throw new Error('Error al enviar el formulario');
+                    });
                 }
+            })
+            .then(data => {
+                // Mensaje de éxito
+                const lang = document.documentElement.lang || '{{ app()->getLocale() }}';
+                let successMessage = '¡Mensaje enviado exitosamente! 🚢';
+                
+                if (lang === 'en') {
+                    successMessage = 'Message sent successfully! 🚢';
+                } else if (lang === 'zh') {
+                    successMessage = '消息发送成功！🚢';
+                }
+                
+                btnShip.style.opacity = '0';
+                submitBtn.innerHTML = '<span style="font-size: 14px;">' + successMessage + '</span>';
+                submitBtn.classList.remove('ship-sailing');
+                submitBtn.classList.add('success-sent');
+                
+                // Limpiar el formulario
+                form.reset();
+                grecaptcha.reset();
+                const charCounter = document.querySelector('.char-counter');
+                if (charCounter) {
+                    charCounter.textContent = '0/1000';
+                }
+                
+                // Restaurar el botón después de 3 segundos
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<span class="btn-text">{{ __("messages.form_submit") }}</span><span class="btn-ship">🚢</span>';
+                    submitBtn.classList.remove('success-sent');
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('.btn-text').style.display = 'block';
+                    submitBtn.querySelector('.btn-text').style.opacity = '1';
+                    submitBtn.querySelector('.btn-ship').style.display = 'none';
+                }, 3000);
             })
             .catch(error => {
                 const lang = document.documentElement.lang || 'es';
