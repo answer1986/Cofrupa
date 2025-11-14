@@ -524,22 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="contact-subtitle">{{ __('messages.contact_subtitle') }}</p>
     
     <div class="contact-team-grid">
-        <!-- Persona 1: Marcelo Espinoza -->
-        <div class="contact-person-card">
-            <div class="contact-icon">
-                <i class="fas fa-industry"></i>
-            </div>
-            <h3>{{ __('messages.contact_person1_name') }}</h3>
-            <p class="contact-role">{{ __('messages.contact_person1_role') }}</p>
-            <div class="contact-info-item">
-                <a href="mailto:{{ __('messages.contact_person1_email') }}" class="contact-email-link">
-                    <i class="fas fa-envelope"></i>
-                    {{ __('messages.contact_person1_email') }}
-                </a>
-            </div>
-        </div>
-        
-        <!-- Persona 2: Luis González Ojeda -->
+        <!-- Persona 1: Luis González Ojeda -->
         <div class="contact-person-card contact-highlight">
             <div class="contact-icon">
                 <i class="fas fa-user-tie"></i>
@@ -550,6 +535,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 <a href="mailto:{{ __('messages.contact_person2_email') }}" class="contact-email-link">
                     <i class="fas fa-envelope"></i>
                     {{ __('messages.contact_person2_email') }}
+                </a>
+            </div>
+        </div>
+        
+        <!-- Persona 2: Marcelo Espinoza -->
+        <div class="contact-person-card">
+            <div class="contact-icon">
+                <i class="fas fa-industry"></i>
+            </div>
+            <h3>{{ __('messages.contact_person1_name') }}</h3>
+            <p class="contact-role">{{ __('messages.contact_person1_role') }}</p>
+            <div class="contact-info-item">
+                <a href="mailto:{{ __('messages.contact_person1_email') }}" class="contact-email-link">
+                    <i class="fas fa-envelope"></i>
+                    {{ __('messages.contact_person1_email') }}
                 </a>
             </div>
         </div>

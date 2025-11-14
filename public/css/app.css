@@ -1292,12 +1292,18 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .footer-bottom p {
     margin: 10px 0;
     color: var(--color-gray);
     text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-bottom a {
@@ -1457,6 +1463,29 @@ html {
     .footer-contact-item {
         justify-content: center;
     }
+    
+    .footer-bottom {
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .footer-bottom p {
+        margin: 10px auto;
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    
+    .footer-container-fruteec {
+        padding: 0;
+        margin: 0 auto;
+    }
+    
+    .footer-fruteec {
+        padding: 60px 10px 30px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1479,6 +1508,32 @@ html {
     .markets-fruteec,
     .contact-fruteec {
         padding: 50px 20px;
+    }
+    
+    .footer-fruteec {
+        padding: 60px 10px 30px;
+    }
+    
+    .footer-bottom {
+        width: 100%;
+        margin: 0 auto;
+        padding: 30px 10px 0;
+        text-align: center;
+    }
+    
+    .footer-bottom p {
+        margin: 10px auto;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .footer-container-fruteec {
+        padding: 0 10px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
     }
 
     .cert-carousel-btn {
