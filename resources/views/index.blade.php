@@ -377,7 +377,16 @@ document.addEventListener('DOMContentLoaded', function() {
         { nombre: "China", coords: [104.1954, 35.8617], continente: "Asia" },
         { nombre: "Mexico", coords: [-102.5528, 23.6345], continente: "América" },
         { nombre: "Brazil", coords: [-51.9253, -14.2350], continente: "América del Sur" },
-        { nombre: "Morocco", coords: [-7.0926, 31.7917], continente: "África" }
+        { nombre: "Morocco", coords: [-7.0926, 31.7917], continente: "África" },
+        { nombre: "Russia", coords: [37.6173, 55.7558], continente: "Europa/Asia" },
+        { nombre: "Guatemala", coords: [-90.5130, 14.6349], continente: "América Central" },
+        { nombre: "Ecuador", coords: [-78.4678, -0.1807], continente: "América del Sur" },
+        { nombre: "Canada", coords: [-75.6972, 45.4215], continente: "América del Norte" },
+        { nombre: "United States", coords: [-77.0369, 38.9072], continente: "América del Norte" },
+        { nombre: "Latvia", coords: [24.1052, 56.9496], continente: "Europa" },
+        { nombre: "Portugal", coords: [-9.1393, 38.7223], continente: "Europa" },
+        { nombre: "Belgium", coords: [4.3517, 50.8503], continente: "Europa" },
+        { nombre: "Australia", coords: [149.1281, -35.2809], continente: "Oceanía" }
     ];
     
     let currentRouteIndex = 0;
@@ -583,7 +592,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
         <div class="contact-form-section">
             <h3>{!! editableContent('contact_form_title', 'contacto', 'CONTÁCTANOS', 'text') !!}</h3>
-            <form class="contact-form-fruteec" action="https://formspree.io/f/xnnaekdr" method="POST" id="contactForm" novalidate>
+            <form class="contact-form-fruteec" action="https://formspree.io/f/mzzyepdq" method="POST" id="contactForm" novalidate>
+                <input type="hidden" name="_to" value="cofrupa@cofrupa.cl">
+                <input type="hidden" name="_replyto" id="_replyto" value="">
                 <div class="form-group">
                     <input type="text" 
                            name="empresa" 
@@ -668,7 +679,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <!-- Google reCAPTCHA -->
                 <div class="g-recaptcha-wrapper">
-                    <div class="g-recaptcha" data-sitekey="6LfYourSiteKeyHere"></div>
+                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
                 </div>
                 
                 <button type="submit" class="btn-submit-fruteec" id="submitBtn">
@@ -803,56 +814,101 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnText = submitBtn.querySelector('.btn-text');
         const btnShip = submitBtn.querySelector('.btn-ship');
     
-    // Deshabilitar el botón para evitar múltiples envíos
-    submitBtn.disabled = true;
-    
-    // Ocultar el texto y mostrar el barco
-    btnText.style.opacity = '0';
-    setTimeout(() => {
-        btnText.style.display = 'none';
-        btnShip.style.display = 'block';
-        submitBtn.classList.add('ship-sailing');
+        // Deshabilitar el botón para evitar múltiples envíos
+        submitBtn.disabled = true;
         
-        // Crear olas
-        const wave1 = document.createElement('span');
-        wave1.className = 'wave wave-1';
-        wave1.textContent = '〰️';
-        submitBtn.appendChild(wave1);
-        
-        const wave2 = document.createElement('span');
-        wave2.className = 'wave wave-2';
-        wave2.textContent = '〰️';
-        submitBtn.appendChild(wave2);
-        
-    }, 300);
-    
-    // Mensaje de éxito después de que el barco "zarpe"
-    setTimeout(() => {
-        const lang = document.documentElement.lang || '{{ app()->getLocale() }}';
-        let successMessage = '¡Mensaje enviado exitosamente! 🚢';
-        
-        if (lang === 'en') {
-            successMessage = 'Message sent successfully! 🚢';
-        } else if (lang === 'zh') {
-            successMessage = '消息发送成功！🚢';
-        }
-        
-        btnShip.style.opacity = '0';
-        submitBtn.innerHTML = '<span style="font-size: 14px;">' + successMessage + '</span>';
-        submitBtn.classList.remove('ship-sailing');
-        submitBtn.classList.add('success-sent');
-        
-        // Restaurar el botón después de 3 segundos
+        // Ocultar el texto y mostrar el barco
+        btnText.style.opacity = '0';
         setTimeout(() => {
-            submitBtn.innerHTML = '<span class="btn-text">{{ __("messages.form_submit") }}</span><span class="btn-ship">🚢</span>';
-            submitBtn.classList.remove('success-sent');
-            submitBtn.disabled = false;
-            submitBtn.querySelector('.btn-text').style.display = 'block';
-            submitBtn.querySelector('.btn-text').style.opacity = '1';
-            submitBtn.querySelector('.btn-ship').style.display = 'none';
-        }, 3000);
+            btnText.style.display = 'none';
+            btnShip.style.display = 'block';
+            submitBtn.classList.add('ship-sailing');
+            
+            // Crear olas
+            const wave1 = document.createElement('span');
+            wave1.className = 'wave wave-1';
+            wave1.textContent = '〰️';
+            submitBtn.appendChild(wave1);
+            
+            const wave2 = document.createElement('span');
+            wave2.className = 'wave wave-2';
+            wave2.textContent = '〰️';
+            submitBtn.appendChild(wave2);
+            
+        }, 300);
         
-    }, 2500);
+        // Enviar formulario a Formspree después de la animación
+        setTimeout(() => {
+            // Establecer el campo _replyto con el email del usuario
+            const emailField = document.getElementById('email');
+            const replyToField = document.getElementById('_replyto');
+            if (emailField && replyToField) {
+                replyToField.value = emailField.value;
+            }
+            
+            // Crear FormData con todos los campos del formulario
+            const formData = new FormData(form);
+            
+            // Agregar el token de reCAPTCHA
+            formData.append('g-recaptcha-response', recaptchaResponse);
+            
+            // Enviar a Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mensaje de éxito
+                    const lang = document.documentElement.lang || '{{ app()->getLocale() }}';
+                    let successMessage = '¡Mensaje enviado exitosamente! 🚢';
+                    
+                    if (lang === 'en') {
+                        successMessage = 'Message sent successfully! 🚢';
+                    } else if (lang === 'zh') {
+                        successMessage = '消息发送成功！🚢';
+                    }
+                    
+                    btnShip.style.opacity = '0';
+                    submitBtn.innerHTML = '<span style="font-size: 14px;">' + successMessage + '</span>';
+                    submitBtn.classList.remove('ship-sailing');
+                    submitBtn.classList.add('success-sent');
+                    
+                    // Limpiar el formulario
+                    form.reset();
+                    grecaptcha.reset();
+                    document.querySelector('.char-counter').textContent = '0/1000';
+                    
+                    // Restaurar el botón después de 3 segundos
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<span class="btn-text">{{ __("messages.form_submit") }}</span><span class="btn-ship">🚢</span>';
+                        submitBtn.classList.remove('success-sent');
+                        submitBtn.disabled = false;
+                        submitBtn.querySelector('.btn-text').style.display = 'block';
+                        submitBtn.querySelector('.btn-text').style.opacity = '1';
+                        submitBtn.querySelector('.btn-ship').style.display = 'none';
+                    }, 3000);
+                } else {
+                    throw new Error('Error al enviar el formulario');
+                }
+            })
+            .catch(error => {
+                const lang = document.documentElement.lang || 'es';
+                alert(lang === 'es' ? 'Error al enviar el mensaje. Por favor, intente nuevamente.' : 
+                      (lang === 'en' ? 'Error sending message. Please try again.' : '发送消息时出错。请重试。'));
+                
+                // Restaurar el botón
+                submitBtn.innerHTML = '<span class="btn-text">{{ __("messages.form_submit") }}</span><span class="btn-ship">🚢</span>';
+                submitBtn.classList.remove('ship-sailing');
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-text').style.display = 'block';
+                submitBtn.querySelector('.btn-text').style.opacity = '1';
+                submitBtn.querySelector('.btn-ship').style.display = 'none';
+            });
+        }, 2500);
 });
 </script>
 

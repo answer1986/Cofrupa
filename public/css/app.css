@@ -25,6 +25,15 @@ body {
     overflow-x: hidden;
 }
 
+/* Justificar todos los párrafos */
+p {
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -217,8 +226,8 @@ html {
     padding: 45px 30px 40px 30px;
     border-radius: 15px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    min-height: 380px;
-    height: 380px;
+    min-height: 400px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -296,7 +305,7 @@ html {
 }
 
 .why-card h3 {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--color-primary);
     margin-bottom: 18px;
@@ -314,13 +323,15 @@ html {
 }
 
 .why-card p {
-    font-size: 1.02rem;
+    font-size: 0.92rem;
     color: #555;
-    line-height: 1.9;
+    line-height: 1.7;
     flex-grow: 1;
-    text-align: left;
-    display: flex;
-    align-items: flex-start;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
     font-weight: 400;
 }
 
@@ -459,15 +470,25 @@ html {
 }
 
 .producto-info h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-dark);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    margin-top: 0;
+    min-height: 3.2em;
+    line-height: 1.3;
 }
 
 .producto-info p {
     font-size: 1rem;
     color: var(--color-gray);
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* ============= QUIÉNES SOMOS ============= */
@@ -507,6 +528,11 @@ html {
     color: var(--color-gray);
     line-height: 1.7;
     margin-bottom: 20px;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
 }
 
 .carousel-fruteec {
@@ -589,6 +615,11 @@ html {
     font-size: 1.1rem;
     color: var(--color-gray);
     line-height: 1.7;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
 }
 
 .certifications-carousel {
@@ -1257,11 +1288,16 @@ html {
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-bottom p {
     margin: 10px 0;
     color: var(--color-gray);
+    text-align: center;
 }
 
 .footer-bottom a {
@@ -1272,6 +1308,70 @@ html {
 
 .footer-bottom a:hover {
     color: var(--color-white);
+}
+
+/* Efecto neon verde vibrante para R3Q */
+.r3q-neon {
+    color: #00ff00 !important;
+    font-weight: 700;
+    text-shadow: 
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 15px #00ff00,
+        0 0 20px #00ff00,
+        0 0 35px #00ff00,
+        0 0 40px #00ff00;
+    animation: neon-vibrate 2s ease-in-out infinite;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+@keyframes neon-vibrate {
+    0%, 100% {
+        transform: translateX(0);
+        text-shadow: 
+            0 0 5px #00ff00,
+            0 0 10px #00ff00,
+            0 0 15px #00ff00,
+            0 0 20px #00ff00,
+            0 0 35px #00ff00,
+            0 0 40px #00ff00;
+    }
+    25% {
+        transform: translateX(-2px);
+        text-shadow: 
+            0 0 8px #00ff00,
+            0 0 12px #00ff00,
+            0 0 18px #00ff00,
+            0 0 25px #00ff00,
+            0 0 40px #00ff00,
+            0 0 50px #00ff00;
+    }
+    50% {
+        transform: translateX(2px);
+        text-shadow: 
+            0 0 6px #00ff00,
+            0 0 11px #00ff00,
+            0 0 16px #00ff00,
+            0 0 22px #00ff00,
+            0 0 38px #00ff00,
+            0 0 45px #00ff00;
+    }
+    75% {
+        transform: translateX(-1px);
+        text-shadow: 
+            0 0 7px #00ff00,
+            0 0 13px #00ff00,
+            0 0 19px #00ff00,
+            0 0 24px #00ff00,
+            0 0 42px #00ff00,
+            0 0 48px #00ff00;
+    }
+}
+
+.r3q-neon:hover {
+    animation: neon-vibrate 0.5s ease-in-out infinite;
+    color: #00ff00 !important;
 }
 
 /* ============= SCROLL MARGIN ============= */
@@ -1421,7 +1521,11 @@ html {
 
 /* Markets subtitle */
 .markets-subtitle {
-    text-align: center;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
     font-size: 1.2rem;
     color: var(--color-gray);
     max-width: 900px;
@@ -1431,7 +1535,11 @@ html {
 
 /* Contact subtitle */
 .contact-subtitle {
-    text-align: center;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    hyphens: auto;
     font-size: 1.2rem;
     color: var(--color-gray);
     max-width: 800px;

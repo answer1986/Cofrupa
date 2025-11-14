@@ -38,8 +38,8 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        // Credenciales simples para el admin (puedes cambiarlas)
-        if ($request->email === 'admin@onizzo.com' && $request->password === 'admin123') {
+        // Credenciales del administrador de Cofrupa
+        if ($request->email === 'admin@cofrupa.com' && $request->password === 'Cofrupa2024!') {
             session(['admin_authenticated' => true]);
             return redirect()->route('admin.dashboard');
         }

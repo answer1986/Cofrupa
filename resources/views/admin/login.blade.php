@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onizzo Admin - Login</title>
+    <title>Cofrupa Admin - Login</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,6 +45,7 @@
         .login-header p {
             color: #7f8c8d;
             margin: 0;
+            text-align: justify;
         }
 
         .form-control {
