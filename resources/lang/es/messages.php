@@ -23,7 +23,7 @@ return [
     
     // Sección Sobre Nosotros
     'about_us' => 'SOBRE NOSOTROS',
-    'about_us_description' => 'Con 20 años de experiencia en la exportación de productos de ciruela a los cinco continentes, nos especializamos en ciruelas pasas con hueso, ciruelas pasas sin hueso, ciruelas en condición natural, puré de ciruela y jugo concentrado de ciruela. A lo largo de estas dos décadas, hemos cultivado una sólida reputación de excelencia y calidad en la industria internacional, destacándonos por nuestro compromiso con un servicio confiable y personalizado. Nuestra meta es ofrecer la mejor calidad a nuestros diversos clientes en todo el mundo, asegurando que cada producto que exportamos cumpla con los más altos estándares. Contamos con los recursos y la experiencia necesaria para generar confianza y mantener relaciones duraderas.',
+    'about_us_description' => 'Con 20 años de experiencia en la comercialización de ciruela d\'agen en el mercado local y 15 años exportando productos de ciruela a los cinco continentes, nos especializamos en ciruelas pasas con hueso, ciruelas pasas sin hueso, ciruelas en condición natural, puré de ciruela y jugo concentrado de ciruela. A lo largo de estas dos décadas, hemos cultivado una sólida reputación de excelencia y calidad en la industria internacional, destacándonos por nuestro compromiso con un servicio confiable y personalizado. Nuestra meta es ofrecer la mejor calidad a nuestros diversos clientes en todo el mundo, asegurando que cada producto que exportamos cumpla con los más altos estándares. Contamos con los recursos y la experiencia necesaria para generar confianza y mantener relaciones duraderas.',
     
     'our_mission' => 'NUESTRA MISIÓN',
     'mission_description' => 'Garantizar la exportación de productos de alta calidad desde Chile, apoyados en procesos eficientes, cumplimiento normativo y servicio al cliente orientado a resultados.',
@@ -32,7 +32,7 @@ return [
     'vision_description' => 'Ser reconocidos por la calidad y el servicio en la exportación de productos de ciruela, construyendo relaciones duraderas con nuestros clientes a través de la confianza y la innovación.',
     
     'who_we_are' => 'QUIÉNES SOMOS',
-    'who_we_are_description' => 'Desde hace más de una década, nuestra empresa familiar se ha dedicado al comercio en el mercado local. Gracias a nuestra sólida relación con los productores, hemos fortalecido los lazos dentro de la cadena de valor, generando beneficios significativos para todos los involucrados. Estos beneficios han conducido a la estabilidad y crecimiento para todos, lo que nos ha llevado a expandir nuestras operaciones hacia la exportación de nuestros productos.',
+    'who_we_are_description' => 'Desde hace más de 20 años, nuestra empresa familiar se ha dedicado al comercio en el mercado local. Gracias a nuestra sólida relación con los productores, hemos fortalecido los lazos dentro de la cadena de valor, generando beneficios significativos para todos los involucrados. Estos beneficios han conducido a la estabilidad y crecimiento para todos, lo que nos ha llevado a expandir nuestras operaciones hacia la exportación de nuestros productos.',
     
     'logistics_title' => 'LOGÍSTICA Y CAPACIDAD',
     'logistics_description' => 'Exportamos ciruela d\'agen y productos derivados, desde Chile a destinos globales, operando principalmente vía marítima desde Valparaíso y San Antonio. Especialistas en preparar y despachar mercancía, garantizando cumplimiento aduanero, documentación y tiempos de entrega confiables, para que nuestros clientes reciban sus productos de forma eficiente y segura.',
@@ -113,8 +113,8 @@ Sin Cáscara',
 
     // Por qué nosotros
     'why_us_title' => 'VENTAJAS COMPETITIVAS',
-    'why_us_card1_title' => '20 AÑOS DE EXPERIENCIA',
-    'why_us_card1_desc' => 'Exportando ciruelas chilenas a cinco continentes, con especialización en ciruelas pasas con hueso y sin hueso, ciruelas naturales, puré y jugo concentrado.',
+    'why_us_card1_title' => '15 AÑOS DE EXPERIENCIA',
+    'why_us_card1_desc' => '15 años de experiencia en la exportación de ciruelas chilenas d\'agen a los 5 continentes, con especialización en ciruelas pasas con hueso y sin hueso, ciruelas naturales, puré y jugo concentrado.',
     'why_us_card2_title' => 'CALIDAD Y CONSISTENCIA',
     'why_us_card2_desc' => 'Productos certificados y procesos que aseguran cumplimiento aduanero, documentación oportuna y entregas confiables.',
     'why_us_card3_title' => 'ENFOQUE EN EXPORTACIÓN',
