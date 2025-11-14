@@ -61,9 +61,7 @@
         <div class="footer-bottom">
             <p>&copy; {{ date('Y') }} Cofrupa. Todos los derechos reservados.</p>
             <p>
-                <a href="https://r3q.cl" target="_blank" rel="noopener noreferrer">
-                    {{ __('messages.development_by') }}
-                </a>
+                Desarrollo hecho por <a href="https://r3q.cl" target="_blank" rel="noopener noreferrer" class="r3q-neon">R3Q</a>
             </p>
         </div>
     </div>

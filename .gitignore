@@ -14,3 +14,13 @@ yarn-error.log
 /.idea
 /.vscode
 /public/video/*
+/Cofrupa2.mp4
+*.mp4
+*.MP4
+/cofrupa-img/
+*.mov
+*.MOV
+*.avi
+*.AVI
+.DS_Store
+*.DS_Store

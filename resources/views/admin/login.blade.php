@@ -45,6 +45,7 @@
         .login-header p {
             color: #7f8c8d;
             margin: 0;
+            text-align: justify;
         }
 
         .form-control {
