@@ -23,6 +23,9 @@ body {
     color: var(--color-dark);
     background-color: var(--color-white);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 /* Justificar todos los párrafos */
@@ -36,6 +39,10 @@ p {
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* ============= HEADER ============= */
@@ -1196,8 +1203,10 @@ html {
     color: var(--color-white);
     padding: 60px 20px 30px;
     width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
     box-sizing: border-box;
+    position: relative;
 }
 
 .footer-container-fruteec {
@@ -1206,6 +1215,7 @@ html {
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .footer-top {
@@ -1312,6 +1322,9 @@ html {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .footer-bottom a {
@@ -1484,27 +1497,43 @@ html {
         margin: 10px auto;
         padding: 0 10px;
         max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .footer-container-fruteec {
         padding: 0 15px;
         margin: 0 auto;
         width: 100%;
-        max-width: 100%;
+        max-width: 100vw;
         box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .footer-fruteec {
         padding: 60px 10px 30px;
         width: 100%;
+        max-width: 100vw;
         overflow-x: hidden;
         box-sizing: border-box;
+        position: relative;
     }
     
     .footer-top {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .footer-bottom {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 }
 
@@ -1553,14 +1582,18 @@ html {
         padding: 0 15px;
         margin: 0 auto;
         width: 100%;
-        max-width: 100%;
+        max-width: 100vw;
         box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .footer-fruteec {
+        padding: 60px 10px 30px;
         width: 100%;
+        max-width: 100vw;
         overflow-x: hidden;
         box-sizing: border-box;
+        position: relative;
     }
     
     .footer-top {
@@ -1568,6 +1601,24 @@ html {
         max-width: 100%;
         box-sizing: border-box;
         padding: 0;
+        overflow-x: hidden;
+    }
+    
+    .footer-bottom {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .footer-bottom p {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .cert-carousel-btn {
