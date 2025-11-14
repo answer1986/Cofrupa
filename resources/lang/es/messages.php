@@ -108,7 +108,7 @@ Sin Cáscara',
     // Hero section
     'hero_subtitle' => 'Calidad y experiencia en cada envío',
     'hero_title' => 'EXPORTADORES DE CIRUELA D\'AGEN',
-    'hero_description' => 'Con 20 años de experiencia en la exportación de productos de ciruela a los cinco continentes, ofrecemos ciruelas pasas con y sin hueso, ciruelas en condición natural, puré de ciruela y jugo concentrado de ciruela.',
+    'hero_description' => 'Con 20 años de experiencia en la comercialización de ciruela d\'agen en el mercado local y 15 años exportando productos de ciruela a los cinco continentes, ofrecemos ciruelas pasas con y sin hueso, ciruelas en condición natural, puré de ciruela y jugo concentrado de ciruela.',
     'hero_button' => 'Contáctanos',
 
     // Por qué nosotros
