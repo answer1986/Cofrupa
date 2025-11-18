@@ -479,6 +479,9 @@ p {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     transition: all 0.3s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .producto-item:hover {
@@ -499,6 +502,9 @@ p {
 
 .producto-info {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .producto-info h3 {
@@ -520,7 +526,34 @@ p {
     word-spacing: normal;
     hyphens: auto;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 15px;
+}
+
+.btn-download-datasheet {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--color-primary), #8b1f4a);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(95, 26, 55, 0.2);
+    align-self: flex-start;
+}
+
+.btn-download-datasheet:hover {
+    background: linear-gradient(135deg, #8b1f4a, var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(95, 26, 55, 0.35);
+}
+
+.btn-download-datasheet i {
+    font-size: 1.1rem;
 }
 
 /* ============= QUIÉNES SOMOS ============= */
@@ -1540,6 +1573,11 @@ p {
         grid-template-columns: 1fr;
     }
 
+    .btn-download-datasheet {
+        font-size: 0.9rem;
+        padding: 9px 16px;
+    }
+
     .contact-team-grid {
         grid-template-columns: 1fr;
     }
@@ -1710,6 +1748,17 @@ p {
 
     .section-title-fruteec {
         font-size: 1.8rem;
+    }
+
+    .btn-download-datasheet {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-download-datasheet i {
+        font-size: 1rem;
     }
 
     .why-us-fruteec,

@@ -131,6 +131,7 @@ Shelled',
     'product4_desc' => 'Natural product made from D\'Agen variety prunes, through cooking and crushing. Smooth and creamy texture, ideal for culinary applications.',
     'product5_name' => 'Concentrated prunes Juice',
     'product5_desc' => 'Natural product obtained from rehydrated prunes. Made through an extraction process that preserves its quality and richness in nutrients.',
+    'download_datasheet' => 'Download Datasheet',
 
     // Navigation
     'inicio' => 'Home',

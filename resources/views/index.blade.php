@@ -114,6 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="producto-info">
                 <h3>{{ __('messages.product1_name') }}</h3>
                 <p>{{ __('messages.product1_desc') }}</p>
+                <a href="{{ asset('details_product/PITTED PRUNES.pdf') }}" class="btn-download-datasheet" download>
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.download_datasheet') }}
+                </a>
             </div>
         </div>
         <div class="producto-item">
@@ -121,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="producto-info">
                 <h3>{{ __('messages.product2_name') }}</h3>
                 <p>{{ __('messages.product2_desc') }}</p>
+                <a href="{{ asset('details_product/PRUNES WITH PÍTS.pdf') }}" class="btn-download-datasheet" download>
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.download_datasheet') }}
+                </a>
             </div>
         </div>
         <div class="producto-item">
@@ -128,6 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="producto-info">
                 <h3>{{ __('messages.product3_name') }}</h3>
                 <p>{{ __('messages.product3_desc') }}</p>
+                <a href="{{ asset('details_product/PRUNES21.pdf') }}" class="btn-download-datasheet" download>
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.download_datasheet') }}
+                </a>
             </div>
         </div>
         <div class="producto-item">
@@ -135,6 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="producto-info">
                 <h3>{{ __('messages.product4_name') }}</h3>
                 <p>{{ __('messages.product4_desc') }}</p>
+                <a href="{{ asset('details_product/DEHYDRATED PRUNES PULP.pdf') }}" class="btn-download-datasheet" download>
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.download_datasheet') }}
+                </a>
             </div>
         </div>
         <div class="producto-item">
@@ -142,6 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="producto-info">
                 <h3>{{ __('messages.product5_name') }}</h3>
                 <p>{{ __('messages.product5_desc') }}</p>
+                <a href="{{ asset('details_product/CONCENTRATED PRUNES JUICE 36 meses de duración.pdf') }}" class="btn-download-datasheet" download>
+                    <i class="fas fa-file-pdf"></i> {{ __('messages.download_datasheet') }}
+                </a>
             </div>
         </div>
     </div>
