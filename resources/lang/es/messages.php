@@ -136,6 +136,7 @@ Sin Cáscara',
     'product4_desc' => 'Producto natural elaborado a partir de ciruelas pasas variedad D\'Agen, mediante cocción y trituración. Textura suave y cremosa, ideal para aplicaciones culinarias.',
     'product5_name' => 'Jugo Concentrado de Ciruelas',
     'product5_desc' => 'Producto natural obtenido de ciruelas pasas rehidratadas. Elaborado mediante proceso de extracción que preserva su calidad y riqueza en nutrientes.',
+    'download_datasheet' => 'Descargar Ficha Técnica',
 
     // Navegación
     'inicio' => 'Inicio',
