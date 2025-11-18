@@ -13,6 +13,20 @@ Route::get('/', function () {
 
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
+// Ruta para descargar PDFs de productos
+Route::get('/download-datasheet/{filename}', function ($filename) {
+    $filePath = public_path('details_product/' . $filename);
+    
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    
+    return response()->download($filePath, $filename, [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+    ]);
+})->name('download.datasheet');
+
 // APIs para edición inline (nuevas rutas)
 Route::post('/api/admin/content/update', [AdminController::class, 'updateContent'])->name('api.content.update');
 Route::post('/api/admin/image/update', [AdminController::class, 'updateImage'])->name('api.image.update');
