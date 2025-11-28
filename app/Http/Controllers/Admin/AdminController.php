@@ -38,8 +38,8 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        // Credenciales simples para el admin (puedes cambiarlas)
-        if ($request->email === 'admin@cofrupa.cl' && $request->password === 'Cofrupa2025#') {
+        // Credenciales del administrador de Cofrupa
+        if ($request->email === 'admin@cofrupa.com' && $request->password === 'Cofrupa2024!') {
             session(['admin_authenticated' => true]);
             return redirect()->route('admin.dashboard');
         }
@@ -51,10 +51,10 @@ class AdminController extends Controller
     {
         $totalContents = Content::count();
         $totalImages = Image::count();
-        $totalContacts = Content::where('section', 'contacto')->count();
-        $totalFooter = Content::where('section', 'footer')->count() + Image::where('section', 'footer')->count();
+        $totalCarouselImages = Image::where('section', 'certificaciones')->whereNotNull('cert_order')->count();
+        $totalSlides = Image::where('section', 'slider')->whereNotNull('slider_order')->count();
         
-        return view('admin.dashboard', compact('totalContents', 'totalImages', 'totalContacts', 'totalFooter'));
+        return view('admin.dashboard', compact('totalContents', 'totalImages', 'totalCarouselImages', 'totalSlides'));
     }
 
     public function logout()

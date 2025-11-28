@@ -20,6 +20,7 @@ class Image extends Model
         'is_active',
         'carousel_order',
         'slider_order',
+        'cert_order',
         'thumbnail_path',
         'title_es',
         'title_en',

@@ -5,10 +5,15 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\ImageController;
-use App\Http\Controllers\Admin\ContactController;
 
 Route::get('/', function () {
-    return view('index');
+    // Obtener certificaciones dinámicamente
+    $certifications = \App\Models\Image::where('section', 'certificaciones')
+                                       ->whereNotNull('cert_order')
+                                       ->orderBy('cert_order')
+                                       ->get();
+    
+    return view('index', compact('certifications'));
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
@@ -62,19 +67,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('images', ImageController::class);
     Route::post('images/import', [ImageController::class, 'importExisting'])->name('images.import');
     
-    // Rutas de contactos
-    Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
-    Route::post('contacts/import', [ContactController::class, 'importExisting'])->name('contacts.import');
-    Route::post('footer/import', [ContactController::class, 'importFooter'])->name('footer.import');
-    
-    // Rutas del carrusel
-    Route::get('carousel', [App\Http\Controllers\Admin\CarouselController::class, 'index'])->name('carousel.index');
-    Route::get('carousel/get/{id}', [App\Http\Controllers\Admin\CarouselController::class, 'show'])->name('carousel.get');
-    Route::post('carousel/store', [App\Http\Controllers\Admin\CarouselController::class, 'store'])->name('carousel.store');
-    Route::post('carousel/update/{id}', [App\Http\Controllers\Admin\CarouselController::class, 'update'])->name('carousel.update');
-    Route::post('carousel/destroy', [App\Http\Controllers\Admin\CarouselController::class, 'destroy'])->name('carousel.destroy');
-    Route::post('carousel/reorder', [App\Http\Controllers\Admin\CarouselController::class, 'reorder'])->name('carousel.reorder');
-    Route::post('carousel/update-order', [App\Http\Controllers\Admin\CarouselController::class, 'updateCarouselOrder'])->name('carousel.update-order');
+    // Rutas de certificaciones
+    Route::get('certifications', [App\Http\Controllers\Admin\CertificationController::class, 'index'])->name('certifications.index');
+    Route::post('certifications/store', [App\Http\Controllers\Admin\CertificationController::class, 'store'])->name('certifications.store');
+    Route::post('certifications/update/{id}', [App\Http\Controllers\Admin\CertificationController::class, 'update'])->name('certifications.update');
+    Route::post('certifications/destroy', [App\Http\Controllers\Admin\CertificationController::class, 'destroy'])->name('certifications.destroy');
+    Route::post('certifications/reorder', [App\Http\Controllers\Admin\CertificationController::class, 'reorder'])->name('certifications.reorder');
     
     // Rutas del slider
     Route::get('slider', [App\Http\Controllers\Admin\SliderController::class, 'index'])->name('slider.index');

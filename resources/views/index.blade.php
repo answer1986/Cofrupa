@@ -210,19 +210,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
             
             <div class="cert-carousel-track">
-                <div class="cert-carousel-slide active">
-                    {!! editableImage('cert_1', './image/icon/certificaciones.png', 'Certificación 1', 'certificaciones', 'cert-carousel-img') !!}
+                @foreach($certifications as $index => $cert)
+                <div class="cert-carousel-slide {{ $index === 0 ? 'active' : '' }}">
+                    {!! editableImage($cert->key, $cert->path, $cert->alt_text_es, 'certificaciones', 'cert-carousel-img') !!}
                 </div>
-                <div class="cert-carousel-slide">
-                    {!! editableImage('cert_2', './image/icon/certificaciones.png', 'Certificación 2', 'certificaciones', 'cert-carousel-img') !!}
-                </div>
-                <div class="cert-carousel-slide">
-                    {!! editableImage('cert_3', './image/icon/certificaciones.png', 'Certificación 3', 'certificaciones', 'cert-carousel-img') !!}
-                </div>
-                <div class="cert-carousel-slide">
-                    {!! editableImage('cert_4', './image/icon/certificaciones.png', 'Certificación 4', 'certificaciones', 'cert-carousel-img') !!}
-        </div>
-                    </div>
+                @endforeach
+            </div>
             
             <button class="cert-carousel-btn next" onclick="nextCert()">
                 <i class="fas fa-chevron-right"></i>
@@ -230,8 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         
         <div class="cert-carousel-dots" id="cert-dots"></div>
-        </div>
-    </section>
+    </div>
+</section>
 
 <script>
 let currentCertIndex = 0;

@@ -39,20 +39,20 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="stats-card">
                 <div class="stats-icon text-warning">
-                    <i class="fas fa-address-book"></i>
+                    <i class="fas fa-image"></i>
                 </div>
-                <h3 class="text-warning">{{ $totalContacts ?? 0 }}</h3>
-                <p class="text-muted mb-0">Contactos</p>
+                <h3 class="text-warning">{{ $totalCarouselImages ?? 0 }}</h3>
+                <p class="text-muted mb-0">Carrusel</p>
             </div>
         </div>
         
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="stats-card">
                 <div class="stats-icon text-info">
-                    <i class="fas fa-layer-group"></i>
+                    <i class="fas fa-play-circle"></i>
                 </div>
-                <h3 class="text-info">{{ $totalFooter ?? 0 }}</h3>
-                <p class="text-muted mb-0">Footer</p>
+                <h3 class="text-info">{{ $totalSlides ?? 0 }}</h3>
+                <p class="text-muted mb-0">Slides</p>
             </div>
         </div>
     </div>
@@ -145,11 +145,11 @@
                     <a href="{{ route('admin.images.index') }}" class="btn btn-outline-success btn-sm w-100 mb-2">
                         <i class="fas fa-images me-2"></i>Gestionar Imágenes
                     </a>
-                    <a href="{{ route('admin.contacts.index') }}" class="btn btn-outline-warning btn-sm w-100 mb-2">
-                        <i class="fas fa-address-book me-2"></i>Gestionar Contactos
+                    <a href="{{ route('admin.certifications.index') }}" class="btn btn-outline-warning btn-sm w-100 mb-2">
+                        <i class="fas fa-image me-2"></i>Gestionar Carrusel
                     </a>
-                    <a href="{{ route('admin.contents.index') }}?section=footer" class="btn btn-outline-info btn-sm w-100">
-                        <i class="fas fa-layer-group me-2"></i>Gestionar Footer
+                    <a href="{{ route('admin.slider.index') }}" class="btn btn-outline-info btn-sm w-100">
+                        <i class="fas fa-play-circle me-2"></i>Gestionar Slider
                     </a>
                 </div>
             </div>
